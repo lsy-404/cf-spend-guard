@@ -47,13 +47,13 @@ R2 这一路有两个细节值得说明：
 ## 部署
 
 ```bash
-npm install
+corepack pnpm@10.34.6 install --frozen-lockfile
 ```
 
 建 KV 命名空间：
 
 ```bash
-npx wrangler kv namespace create STATE
+pnpm exec wrangler kv namespace create STATE
 ```
 
 仓库里的 `wrangler.jsonc` 保留占位 id。账户 id 与命名空间 id 不入库，另建一份
@@ -62,27 +62,27 @@ npx wrangler kv namespace create STATE
 配置密钥。API Token 需要三项权限：Account Analytics 读、Workers Scripts 编辑、Zone WAF 编辑。
 
 ```bash
-npx wrangler secret put CF_API_TOKEN
+pnpm exec wrangler secret put CF_API_TOKEN
 ```
 
 ```bash
-npx wrangler secret put CF_ACCOUNT_ID
+pnpm exec wrangler secret put CF_ACCOUNT_ID
 ```
 
 ```bash
-npx wrangler secret put RESTORE_SECRET
+pnpm exec wrangler secret put RESTORE_SECRET
 ```
 
 可选的通知地址：
 
 ```bash
-npx wrangler secret put ALERT_WEBHOOK
+pnpm exec wrangler secret put ALERT_WEBHOOK
 ```
 
 部署：
 
 ```bash
-npx wrangler deploy -c wrangler.local.jsonc
+pnpm exec wrangler deploy -c wrangler.local.jsonc
 ```
 
 ## 上线顺序
